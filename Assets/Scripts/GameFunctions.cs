@@ -5,7 +5,7 @@ using System.IO;
 public static class GameFunctions
 {
     
-    public static string[] ReadArray(string fileName)
+    public static string[] ReadFile(string fileName)
     {
         string path = Application.dataPath + "/Data/" + fileName + ".txt";
         string contents = File.ReadAllText(path);

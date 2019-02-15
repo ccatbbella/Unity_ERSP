@@ -6,18 +6,23 @@ using System.IO;
 public class Size : MonoBehaviour
 {
     private float size;
+    //tracks current line in textfile
     private int index;
+    //How long to wait before retrieving next line of input
     [SerializeField] private float growthTime = 1;
     [SerializeField] private string fileName;
+
     private float[] sizes;
     private List<Transform> trees = new List<Transform>(0);
    
 
     private void Start()
     {
-        string[] sSizes = GameFunctions.ReadArray(fileName);
+        // creates array of string sizes
+        string[] sSizes = GameFunctions.ReadFile(fileName);
         sizes = new float[sSizes.Length];
         
+        //stores array of string sizes in our member variable sizes
         for(int i = 0; i < sSizes.Length; i++)
         {
             sizes[i] = float.Parse(sSizes[i]);
