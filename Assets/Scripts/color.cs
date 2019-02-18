@@ -11,6 +11,7 @@ public class color : MonoBehaviour
     [SerializeField] private int numberOfObject2;
     [SerializeField] private Texture2D myTexture;
     private Color[] myColors;
+    public List<Color> result;
     private Terrain myTerrain;
     private TerrainData myTerrainData;
     private List<Vector3> takenCoordinates = new List<Vector3>();
@@ -44,7 +45,7 @@ public class color : MonoBehaviour
     }
     public List<Color> GetColorList(Color[] allColors)
     {
-        List<Color> result = new List<Color>();
+        result = new List<Color>();
 
         foreach(Color color in allColors)
         {
@@ -56,7 +57,7 @@ public class color : MonoBehaviour
         return result;
     }
 
-    public void AllocateObject(GameObject prefab, Color c)
+    public GameObject AllocateObject(GameObject prefab, Color c)
     {
         //x, z are the coordinates of the top left corner of myTerrain
         float x = myTerrain.GetPosition().x;
@@ -74,11 +75,14 @@ public class color : MonoBehaviour
 
             if (IsSameColor(c, samplePointColor) && takenCoordinates.IndexOf(samplePoint) == -1)
             {
-                GameObject.Instantiate(prefab, samplePoint, Quaternion.identity);
                 takenCoordinates.Add(samplePoint);
-                return;
+                return GameObject.Instantiate(prefab, samplePoint, Quaternion.identity);
+                
+            
             }
+           
         }
+        return null;
     }
 
     public void AllocateObjects(GameObject prefab, Color c, int numberOfObjects)

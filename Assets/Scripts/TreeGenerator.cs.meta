@@ -3,7 +3,13 @@ guid: 7537a7e8c9c00d84dada6ddb446a31dc
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - resprouterPrefab: {fileID: 6720497583818801261, guid: 9c100d2face03ce41b880f91d5ad3f60,
+      type: 3}
+  - seederPrefab: {fileID: 3793425661484989930, guid: 5d03b25d0720c0744b94f209851fbc1c,
+      type: 3}
+  - rs: {instanceID: 0}
+  - ss: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

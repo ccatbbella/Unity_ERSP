@@ -10,13 +10,9 @@ public class TreeGenerator : MonoBehaviour
     [SerializeField] private Size ss;
     [SerializeField] private int numberOfResprouters = 15;
     [SerializeField] private int numberOfSeeder = 15;
-    /*
-    public void AddTree(Transform newTree)
-    {
-        newTree.localScale = Vector3.one * 5f;  
-    }
-    */
-        // Start is called before the first frame update
+    private color rc;
+    private color sc;
+
     void Awake()
     {
         GameObject thisTree;
@@ -33,8 +29,12 @@ public class TreeGenerator : MonoBehaviour
     }
     private GameObject GenerateTree(GameObject treePrefab)
     {
-        Vector3 p = new Vector3(Random.Range(100f, 1000f), 0, Random.Range(100f, 1000f));  //p decide the area trees are in
+        
+        Vector3 p = new Vector3(Random.Range(0f, 500f), 0, Random.Range(0f, 500f));  //p decide the area trees are in
         return GameObject.Instantiate(treePrefab, p, Quaternion.identity);
+        
+        
+
     }
     
 }

@@ -5,25 +5,16 @@ using System.IO;
 
 public class Size : MonoBehaviour
 {
-    private float size;
-    private int index;
-    [SerializeField] private float growthTime = 1;
+    private int index = 0;   // use to index my sizes list
+    [SerializeField] private float growthTime = 1;    // how long to pause before reading the next value in sizes
     [SerializeField] private string fileName;
-    private float[] sizes;
-    private List<Transform> trees = new List<Transform>(0);
-   
+    List<float> sizes = new List<float>();
+    private List<Transform> trees = new List<Transform>();
 
     private void Start()
     {
-        string[] sSizes = GameFunctions.ReadArray(fileName);
-        sizes = new float[sSizes.Length];
-        
-        for(int i = 0; i < sSizes.Length; i++)
-        {
-            sizes[i] = float.Parse(sSizes[i]);
-        }
-
-        index = 0;
+        sizes = GameFunctions.Read(fileName, "biomass");
+        Debug.Log("Read sizes size is " + sizes.Count);
         StartCoroutine(WaitThenChangeSize(0));
     }
 
@@ -32,15 +23,16 @@ public class Size : MonoBehaviour
         yield return new WaitForSeconds(time);
         foreach (Transform t in trees)
         {
-            t.localScale = Vector3.one * sizes[index];
+            t.localScale = Vector3.one * (sizes[index] /100f);
+            Debug.Log(t.localScale.x);
         }
-        
         index++;
-        if (index<sizes.Length)
+        Debug.Log(index);
+        if( index >= sizes.Count)
         {
-            StartCoroutine(WaitThenChangeSize(growthTime));
+            Debug.Break();
         }
-
+        StartCoroutine(WaitThenChangeSize(growthTime));
     }
     public void AddTree(Transform t)
     {
