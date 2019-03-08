@@ -60,13 +60,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Class1.cs" />
+    <Compile Include="Assets\Scripts\color.cs" />
     <Compile Include="Assets\Scripts\GameFunctions.cs" />
+    <Compile Include="Assets\Scripts\heightMap.cs" />
+    <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\resizeTree.cs" />
-    <Compile Include="Assets\Scripts\seederSize.cs" />
     <Compile Include="Assets\Scripts\Size.cs" />
     <Compile Include="Assets\Scripts\TreeGenerator.cs" />
     <None Include="Assets\Data\seeder.txt" />
     <None Include="Assets\Data\resprouter.txt" />
+    <None Include="Assets\Data\chamise(resprouter).txt" />
+    <None Include="Assets\Data\ceanothus(seeder).txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/ccatb/Documents/Bush/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

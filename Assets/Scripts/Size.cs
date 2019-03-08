@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq; //for finding min
 using UnityEngine;
 using System.IO;
 
@@ -21,13 +22,16 @@ public class Size : MonoBehaviour
     IEnumerator WaitThenChangeSize(float time)
     {
         yield return new WaitForSeconds(time);
+        float min = sizes.Min();
+        float minScale = 3f;
         foreach (Transform t in trees)
         {
             t.localScale = Vector3.one * (sizes[index] /100f);
+            //t.localScale = Vector3.one * ((sizes[index]*minScale)/min);
             Debug.Log(t.localScale.x);
         }
         index++;
-        Debug.Log(index);
+        
         if( index >= sizes.Count)
         {
             Debug.Break();

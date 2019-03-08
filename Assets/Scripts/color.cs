@@ -64,15 +64,20 @@ public class color : MonoBehaviour
         float z = myTerrain.GetPosition().z;
         float width = myTerrainData.size.x; //width of myTerrain
         float length = myTerrainData.size.z;  //length of myTerrain
+        width = 2048;
+        length = 2048;
+        Debug.Log(width);
 
         for (int i = 0; i < width*length; i++)
         {
             float sampleX = UnityEngine.Random.Range(x, x + width); //x coordinates of my random sample point
             float sampleZ = UnityEngine.Random.Range(z, z + length);
             float sampleY = myTerrainData.GetHeight((int)(sampleX), (int)(sampleZ));
+           
             Color samplePointColor = myTexture.GetPixel((int)(sampleX), (int)(sampleZ));
             Vector3 samplePoint = new Vector3(sampleX, sampleY, sampleZ);
-
+            float realHeight = myTerrain.SampleHeight(samplePoint);
+            samplePoint.y = realHeight;
             if (IsSameColor(c, samplePointColor) && takenCoordinates.IndexOf(samplePoint) == -1)
             {
                 takenCoordinates.Add(samplePoint);
@@ -109,9 +114,9 @@ public class color : MonoBehaviour
             Color.RGBToHSV(c, out float H1, out float S1, out float V1);
             Debug.Log(H1);
         }
-
+        Color g = Color.green;
         Color.RGBToHSV(result[2], out float H2, out float S2, out float V2);
-        AllocateObjects(object1, result[0], numberOfObject1);
+        AllocateObjects(object1, g, numberOfObject1);
         AllocateObjects(object2, result[1], numberOfObject2);
     }
 }
